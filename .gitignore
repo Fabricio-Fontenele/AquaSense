@@ -43,3 +43,12 @@ __pycache__/
 *.sketch
 *.psd
 *.xd
+
+lib/
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.env
+.venv
+venv/
