@@ -1,0 +1,305 @@
+{
+  "payLoad": [
+    {
+      "id": 123,
+      "consumo": 0.067,
+      "data": "13/04/25",
+      "hora": "10:20:00",
+      "idCliente": 1
+    },
+    {
+      "id": 124,
+      "consumo": 0.058,
+      "data": "13/04/25",
+      "hora": "10:20:01",
+      "idCliente": 1
+    },
+    {
+      "id": 125,
+      "consumo": 0.07,
+      "data": "13/04/25",
+      "hora": "10:20:03",
+      "idCliente": 1
+    },
+    {
+      "id": 126,
+      "consumo": 0.083,
+      "data": "13/04/25",
+      "hora": "10:20:05",
+      "idCliente": 1
+    },
+    {
+      "id": 127,
+      "consumo": 0.056,
+      "data": "13/04/25",
+      "hora": "10:20:07",
+      "idCliente": 1
+    },
+    {
+      "id": 128,
+      "consumo": 0.056,
+      "data": "13/04/25",
+      "hora": "10:20:09",
+      "idCliente": 1
+    },
+    {
+      "id": 129,
+      "consumo": 0.084,
+      "data": "13/04/25",
+      "hora": "10:20:10",
+      "idCliente": 1
+    },
+    {
+      "id": 130,
+      "consumo": 0.072,
+      "data": "13/04/25",
+      "hora": "10:20:12",
+      "idCliente": 1
+    },
+    {
+      "id": 131,
+      "consumo": 0.053,
+      "data": "13/04/25",
+      "hora": "10:20:14",
+      "idCliente": 1
+    },
+    {
+      "id": 132,
+      "consumo": 0.068,
+      "data": "13/04/25",
+      "hora": "10:20:16",
+      "idCliente": 1
+    },
+    {
+      "id": 133,
+      "consumo": 0.053,
+      "data": "13/04/25",
+      "hora": "10:20:18",
+      "idCliente": 1
+    },
+    {
+      "id": 134,
+      "consumo": 0.053,
+      "data": "13/04/25",
+      "hora": "10:20:19",
+      "idCliente": 1
+    },
+    {
+      "id": 135,
+      "consumo": 0.064,
+      "data": "13/04/25",
+      "hora": "10:20:21",
+      "idCliente": 1
+    },
+    {
+      "id": 136,
+      "consumo": 0.031,
+      "data": "13/04/25",
+      "hora": "10:20:23",
+      "idCliente": 1
+    },
+    {
+      "id": 137,
+      "consumo": 0.034,
+      "data": "13/04/25",
+      "hora": "10:20:25",
+      "idCliente": 1
+    },
+    {
+      "id": 138,
+      "consumo": 0.052,
+      "data": "13/04/25",
+      "hora": "10:20:27",
+      "idCliente": 1
+    },
+    {
+      "id": 139,
+      "consumo": 0.045,
+      "data": "13/04/25",
+      "hora": "10:20:28",
+      "idCliente": 1
+    },
+    {
+      "id": 140,
+      "consumo": 0.065,
+      "data": "13/04/25",
+      "hora": "10:20:30",
+      "idCliente": 1
+    },
+    {
+      "id": 141,
+      "consumo": 0.046,
+      "data": "13/04/25",
+      "hora": "10:20:32",
+      "idCliente": 1
+    },
+    {
+      "id": 142,
+      "consumo": 0.039,
+      "data": "13/04/25",
+      "hora": "10:20:34",
+      "idCliente": 1
+    },
+    {
+      "id": 143,
+      "consumo": 0.082,
+      "data": "13/04/25",
+      "hora": "10:20:36",
+      "idCliente": 1
+    },
+    {
+      "id": 144,
+      "consumo": 0.057,
+      "data": "13/04/25",
+      "hora": "10:20:37",
+      "idCliente": 1
+    },
+    {
+      "id": 145,
+      "consumo": 0.061,
+      "data": "13/04/25",
+      "hora": "10:20:39",
+      "idCliente": 1
+    },
+    {
+      "id": 146,
+      "consumo": 0.039,
+      "data": "13/04/25",
+      "hora": "10:20:41",
+      "idCliente": 1
+    },
+    {
+      "id": 147,
+      "consumo": 0.052,
+      "data": "13/04/25",
+      "hora": "10:20:43",
+      "idCliente": 1
+    },
+    {
+      "id": 148,
+      "consumo": 0.062,
+      "data": "13/04/25",
+      "hora": "10:20:45",
+      "idCliente": 1
+    },
+    {
+      "id": 149,
+      "consumo": 0.043,
+      "data": "13/04/25",
+      "hora": "10:20:46",
+      "idCliente": 1
+    },
+    {
+      "id": 150,
+      "consumo": 0.066,
+      "data": "13/04/25",
+      "hora": "10:20:48",
+      "idCliente": 1
+    },
+    {
+      "id": 151,
+      "consumo": 0.051,
+      "data": "13/04/25",
+      "hora": "10:20:50",
+      "idCliente": 1
+    },
+    {
+      "id": 152,
+      "consumo": 0.056,
+      "data": "13/04/25",
+      "hora": "10:20:52",
+      "idCliente": 1
+    },
+    {
+      "id": 153,
+      "consumo": 0.051,
+      "data": "13/04/25",
+      "hora": "10:20:54",
+      "idCliente": 1
+    },
+    {
+      "id": 154,
+      "consumo": 0.088,
+      "data": "13/04/25",
+      "hora": "10:20:55",
+      "idCliente": 1
+    },
+    {
+      "id": 155,
+      "consumo": 0.06,
+      "data": "13/04/25",
+      "hora": "10:20:57",
+      "idCliente": 1
+    },
+    {
+      "id": 156,
+      "consumo": 0.044,
+      "data": "13/04/25",
+      "hora": "10:20:59",
+      "idCliente": 1
+    },
+    {
+      "id": 157,
+      "consumo": 0.072,
+      "data": "13/04/25",
+      "hora": "10:21:01",
+      "idCliente": 1
+    },
+    {
+      "id": 158,
+      "consumo": 0.042,
+      "data": "13/04/25",
+      "hora": "10:21:03",
+      "idCliente": 1
+    },
+    {
+      "id": 159,
+      "consumo": 0.063,
+      "data": "13/04/25",
+      "hora": "10:21:04",
+      "idCliente": 1
+    },
+    {
+      "id": 160,
+      "consumo": 0.031,
+      "data": "13/04/25",
+      "hora": "10:21:06",
+      "idCliente": 1
+    },
+    {
+      "id": 161,
+      "consumo": 0.04,
+      "data": "13/04/25",
+      "hora": "10:21:08",
+      "idCliente": 1
+    },
+    {
+      "id": 162,
+      "consumo": 0.063,
+      "data": "13/04/25",
+      "hora": "10:21:10",
+      "idCliente": 1
+    },
+    {
+      "id": 163,
+      "consumo": 0.071,
+      "data": "13/04/25",
+      "hora": "10:21:12",
+      "idCliente": 1
+    },
+    {
+      "id": 164,
+      "consumo": 0.063,
+      "data": "13/04/25",
+      "hora": "10:21:13",
+      "idCliente": 1
+    },
+    {
+      "id": 165,
+      "consumo": 0.071,
+      "data": "13/04/25",
+      "hora": "10:21:14",
+      "idCliente": 1
+    }
+  ]
+}
