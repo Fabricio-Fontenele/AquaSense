@@ -25,8 +25,7 @@
           >
         </base-alert>
       </card>
-    </div>
-    <div class="col-md-6">
+    </div class="notifications-states-float">
       <card>
         <h4 slot="header">Notifications states</h4>
         <base-alert type="primary" dismissible>

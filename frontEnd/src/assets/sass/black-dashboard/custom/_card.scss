@@ -194,6 +194,12 @@
     margin-bottom: 15px;
   }
 
+  .historico-scroll {
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
   label {
     font-size: $font-size-sm;
     margin-bottom: 5px;
@@ -222,6 +228,20 @@
   padding: $card-spacer-y;
 }
 
+.notifications-states-float {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  max-height: 380px;
+  z-index: 1050;
+
+  .card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
 @include media-breakpoint-down(sm) {
   .card.card-chart .card-header {
     .btn-group-toggle .tim-icons {
@@ -230,3 +250,4 @@
     }
   }
 }
+

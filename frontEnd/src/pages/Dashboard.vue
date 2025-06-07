@@ -6,14 +6,18 @@
           <template slot="header">
             <div class="row">
               <div class="col-6" :class="isRTL ? 'text-right' : 'text-left'">
-                <h5 class="card-category">Consumo Previsto Aproximado R$ {{ this.calculaExpectativa() }}</h5>
+                <h5 class="card-category">
+                  Consumo Previsto Aproximado R$ {{ this.calculaExpectativa() }}
+                </h5>
                 <h2 class="card-title">Diário</h2>
               </div>
               <div
                 class="col-6 text-right"
                 :class="isRTL ? 'text-right' : 'text-left'"
               >
-                <h2 class="card-title">{{this.obterDataAtualFormatada()}} - {{ consumoTotal }}m³</h2>
+                <h2 class="card-title">
+                  {{ this.obterDataAtualFormatada() }} - {{ consumoTotal }}m³
+                </h2>
               </div>
             </div>
           </template>
@@ -34,7 +38,7 @@
       <div class="col-12">
         <card class="card" :header-classes="{ 'text-right': isRTL }">
           <h4 slot="header" class="card-title">Histórico de consumo</h4>
-          <div class="table-responsive">
+          <div class="table-responsive historico-scroll">
             <user-table></user-table>
           </div>
         </card>
@@ -178,7 +182,7 @@ export default {
   methods: {
     obterDataAtualFormatada() {
       const dataAtual = new Date();
-      return dataAtual.toLocaleDateString('pt-BR');
+      return dataAtual.toLocaleDateString("pt-BR");
     },
     async fetchConsumptionData() {
       try {
@@ -224,20 +228,19 @@ export default {
       }
     },
     async fetchConsumptionTotalData() {
-        try {
-          const response = await fetch("http://localhost:8000/consumo_diario");
-          const data = await response.json();
+      try {
+        const response = await fetch("http://localhost:8000/consumo_diario");
+        const data = await response.json();
 
-            this.consumoTotal = data.consumo_total.toFixed(2);
-          
-        } catch (error) {
-          console.error("Erro ao buscar dados de consumo:", error);
-        }
+        this.consumoTotal = data.consumo_total.toFixed(2);
+      } catch (error) {
+        console.error("Erro ao buscar dados de consumo:", error);
+      }
     },
-    calculaExpectativa(){
-      let valor = this.consumoTotal * 6.00
-      return valor.toFixed(2)
-    }
+    calculaExpectativa() {
+      let valor = this.consumoTotal * 6.0;
+      return valor.toFixed(2);
+    },
   },
   mounted() {
     this.i18n = this.$i18n;
@@ -246,7 +249,7 @@ export default {
       this.$rtl.enableRTL();
     }
     this.fetchConsumptionData(); // <-- Atualiza o gráfico com os dados reais
-    this.fetchConsumptionTotalData()
+    this.fetchConsumptionTotalData();
   },
   beforeDestroy() {
     if (this.$rtl.isRTL) {

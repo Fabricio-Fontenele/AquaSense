@@ -4,12 +4,12 @@
       <template slot="links">
         <sidebar-link
           to="/dashboard"
-          :name="$t('sidebar.dashboard')"
+          :name="$t('GRÁFICO')"
           icon="tim-icons icon-chart-pie-36"
         />
         <sidebar-link
           to="/notifications"
-          :name="$t('sidebar.notifications')"
+          :name="$t('NOTIFICAÇÕES DE CONSUMO')"
           icon="tim-icons icon-bell-55"
         />
       </template>
