@@ -38,4 +38,4 @@ async def upload_json(file: UploadFile = File(...)):
 # Endpoint para visualizar os dados
 @app.get("/payload/")
 def get_payload():
-    return {"payLoad": payload_storage
+    return {"payLoad": payload_storage}
