@@ -1,69 +1,93 @@
 <template>
   <div class="row">
-    <div class="col-md-6">
+    <!-- Card: Alertas Inteligentes -->
+    <div class="col-lg-6 col-md-12 mb-4">
       <card>
-        <h4 slot="header">Notificações</h4>
-        <base-alert type="info">
-          <span>This is a plain notification</span>
+        <template #header>
+          <h4>Alertas Inteligentes</h4>
+        </template>
+        <base-alert type="danger" dismissible with-icon>
+          <span class="tim-icons icon-bell-55"></span>
+          <span>
+            <b>Vazamento detectado!</b><br>
+            Consumo acima do normal nas últimas 2 horas.<br>
+            <small>Verifique imediatamente seu sistema.</small>
+          </span>
         </base-alert>
-        <base-alert type="info" dismissible>
-          <span>This is a plain notification</span>
+        <base-alert type="warning" dismissible with-icon>
+          <span class="tim-icons icon-bell-55"></span>
+          <span>
+            <b>Pico de consumo</b><br>
+            Seu uso entre 18h e 19h foi 45% superior à média.<br>
+            <small>Acompanhe pelo dashboard.</small>
+          </span>
         </base-alert>
         <base-alert type="info" dismissible with-icon>
-          <span data-notify="icon" class="tim-icons icon-bell-55"></span>
-          <span data-notify="message"
-            >This is a notification with close button and icon.</span
-          >
+          <span class="tim-icons icon-bell-55"></span>
+          <span>
+            <b>Novo sensor IoT conectado!</b><br>
+            Dados em tempo real estão sendo recebidos.<br>
+            <small>Última atualização: {{ lastUpdate }}</small>
+          </span>
         </base-alert>
-        <base-alert type="info" dismissible with-icon>
-          <span data-notify="icon" class="tim-icons icon-bell-55"></span>
-          <span data-notify="message"
-            >This is a notification with close button and icon and have many
-            lines. You can see that the icon and the close button are always
-            vertically aligned. This is a beautiful notification. So you don't
-            have to worry about the style.</span
-          >
+        <base-alert type="success" dismissible with-icon>
+          <span class="tim-icons icon-bell-55"></span>
+          <span>
+            <b>Meta mensal atingida!</b><br>
+            Parabéns, você economizou {{ economia }} litros neste mês.<br>
+            <span class="badge badge-success">+{{ pontos }} pts</span>
+          </span>
         </base-alert>
+        <div class="d-flex justify-content-end mt-3">
+          <button class="btn btn-primary" @click="notifyDynamic">
+            Disparar alerta personalizado
+          </button>
+        </div>
       </card>
-    </div class="notifications-states-float">
+    </div>
+
+    <!-- Card: Estados do Sistema -->
+    <div class="col-lg-6 col-md-12 mb-4">
       <card>
-        <h4 slot="header">Notifications states</h4>
+        <template #header>
+          <h4>Estados do Sistema</h4>
+        </template>
         <base-alert type="primary" dismissible>
-          <span
-            ><b> Primary - </b> This is a regular notification made with
-            ".alert-primary"</span
-          >
+          <span>
+            <b>Sistema operacional</b> <br>
+            Todas as integrações funcionando normalmente.
+          </span>
         </base-alert>
         <base-alert type="info" dismissible>
-          <span
-            ><b> Info - </b> This is a regular notification made with
-            ".alert-info"</span
-          >
+          <span>
+            <b>Login realizado</b><br>
+            Bem-vindo, {{ usuario }}!
+          </span>
         </base-alert>
         <base-alert type="success" dismissible>
-          <span
-            ><b> Success - </b> This is a regular notification made with
-            ".alert-success"</span
-          >
+          <span>
+            <b>Cadastro efetuado</b><br>
+            Sua conta AquaSense foi criada com sucesso.
+          </span>
         </base-alert>
         <base-alert type="warning" dismissible>
-          <span
-            ><b> Warning - </b> This is a regular notification made with
-            ".alert-warning"</span
-          >
+          <span>
+            <b>Consumo elevado</b><br>
+            Atenção ao uso nas próximas horas!
+          </span>
         </base-alert>
         <base-alert type="danger" dismissible>
-          <span
-            ><b> Danger - </b> This is a regular notification made with
-            ".alert-danger"</span
-          >
+          <span>
+            <b>Erro de comunicação</b><br>
+            Não foi possível conectar ao servidor IoT.
+          </span>
         </base-alert>
       </card>
     </div>
   </div>
 </template>
+
 <script>
-import NotificationTemplate from "./Notifications/NotificationTemplate";
 import { BaseAlert } from "@/components";
 
 export default {
@@ -72,25 +96,52 @@ export default {
   },
   data() {
     return {
-      type: ["", "info", "success", "warning", "danger"],
-      notifications: {
-        topCenter: false,
-      },
+      usuario: "João",
+      economia: 320,
+      pontos: 25,
+      lastUpdate: "16/07/2025 01:10",
     };
   },
   methods: {
-    notifyVue(verticalAlign, horizontalAlign) {
-      const color = Math.floor(Math.random() * 4 + 1);
+    notifyDynamic() {
+      // Exemplo de notificação dinâmica
       this.$notify({
-        component: NotificationTemplate,
         icon: "tim-icons icon-bell-55",
-        horizontalAlign: horizontalAlign,
-        verticalAlign: verticalAlign,
-        type: this.type[color],
-        timeout: 0,
+        horizontalAlign: "right",
+        verticalAlign: "top",
+        type: "info",
+        message: "Alerta personalizado disparado via IA ou integração IoT.",
+        timeout: 4000,
       });
     },
   },
 };
 </script>
-<style></style>
+
+<style scoped>
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.card {
+  min-height: 100%;
+}
+
+.base-alert {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.badge-success {
+  background: #28a745;
+  color: #fff;
+  margin-left: 8px;
+  font-size: 0.9em;
+  border-radius: 10px;
+  padding: 0.3em 0.7em;
+}
+
+.btn-primary {
+  min-width: 200px;
+}
+</style>

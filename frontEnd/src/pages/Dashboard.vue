@@ -1,57 +1,62 @@
 <template>
   <div>
     <div class="row">
+      <!-- Card: Consumo Diário -->
       <div class="col-12">
-        <card type="chart">
-          <template slot="header">
-            <div class="row">
-              <div class="col-6" :class="isRTL ? 'text-right' : 'text-left'">
-                <h5 class="card-category">
-                  Consumo Previsto Aproximado R$ {{ this.calculaExpectativa() }}
+        <card type="chart" class="dashboard-card">
+          <template #header>
+            <div class="row align-items-center">
+              <div class="col-6 text-left">
+                <h5 class="card-category mb-0 text-muted">
+                  Previsão de custo este mês: <span class="font-weight-bold text-primary">R$ {{ expectativa }}</span>
                 </h5>
-                <h2 class="card-title">Diário</h2>
+                <h2 class="card-title mt-1">Consumo Diário</h2>
+                <p class="card-text mt-2 mb-0">
+                  <span class="badge badge-info px-2 py-1">Meta Mensal: {{ metaMensal }} m³</span>
+                  <span v-if="consumoTotal > metaMensal" class="badge badge-danger ml-2 px-2 py-1">Limite
+                    atingido!</span>
+                  <span v-else class="badge badge-success ml-2 px-2 py-1">Dentro da meta</span>
+                </p>
               </div>
-              <div
-                class="col-6 text-right"
-                :class="isRTL ? 'text-right' : 'text-left'"
-              >
+              <div class="col-6 text-right">
                 <h2 class="card-title">
-                  {{ this.obterDataAtualFormatada() }} - {{ consumoTotal }}m³
+                  {{ dataAtualFormatada }} <span class="mx-2">|</span> <span class="text-success">{{ consumoTotal }}
+                    <small>m³</small></span>
                 </h2>
+                <div class="mt-2">
+                  <span class="badge badge-secondary">Perfil: {{ perfil }}</span>
+                </div>
               </div>
             </div>
           </template>
-          <div class="chart-area">
-            <line-chart
-              ref="bigChart"
-              chart-id="big-line-chart"
-              :chart-data="bigLineChart.chartData"
-              :gradient-colors="bigLineChart.gradientColors"
-              :gradient-stops="bigLineChart.gradientStops"
-              :extra-options="bigLineChart.extraOptions"
-              :height="100"
-            />
+          <div class="chart-area mt-3">
+            <line-chart ref="bigChart" chart-id="big-line-chart" :chart-data="bigLineChart.chartData"
+              :gradient-colors="bigLineChart.gradientColors" :gradient-stops="bigLineChart.gradientStops"
+              :extra-options="bigLineChart.extraOptions" :height="120" />
           </div>
         </card>
       </div>
 
-      <div class="col-12">
-        <card class="card" :header-classes="{ 'text-right': isRTL }">
-          <h4 slot="header" class="card-title">Histórico de consumo</h4>
+      <!-- Card: Histórico de Consumo -->
+      <div class="col-12 mt-4">
+        <card>
+          <template #header>
+            <h4 class="card-title mb-0">Histórico</h4>
+            <small class="text-muted">Veja os últimos registros e tendências</small>
+          </template>
           <div class="table-responsive historico-scroll">
-            <user-table></user-table>
+            <user-table />
           </div>
         </card>
       </div>
     </div>
   </div>
 </template>
+
 <script>
 import LineChart from "@/components/Charts/LineChart";
-import BarChart from "@/components/Charts/BarChart";
-import * as chartConfigs from "@/components/Charts/config";
-import TaskList from "./Dashboard/TaskList";
 import UserTable from "./Dashboard/UserTable";
+import * as chartConfigs from "@/components/Charts/config";
 import config from "@/config";
 
 export default {
@@ -62,127 +67,25 @@ export default {
   data() {
     return {
       consumoTotal: 0,
+      expectativa: "0.00",
+      dataAtualFormatada: "",
+      metaMensal: 30, // exemplo, pode vir do backend ou do perfil do usuário
+      perfil: "Residencial", // pode ser dinâmico: Residencial, Comercial, Público
       bigLineChart: {
-        allData: [
-          [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100],
-          [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120],
-          [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130],
-        ],
-        activeIndex: 0,
         chartData: {
-          datasets: [{}],
-          labels: [
-            "JAN",
-            "FEB",
-            "MAR",
-            "APR",
-            "MAY",
-            "JUN",
-            "JUL",
-            "AUG",
-            "SEP",
-            "OCT",
-            "NOV",
-            "DEC",
-          ],
+          labels: [],
+          datasets: [],
         },
         extraOptions: chartConfigs.purpleChartOptions,
-        gradientColors: config.colors.primaryGradient,
-        gradientStops: [1, 0.4, 0],
-        categories: [],
-      },
-      purpleLineChart: {
-        extraOptions: chartConfigs.purpleChartOptions,
-        chartData: {
-          labels: ["JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
-          datasets: [
-            {
-              label: "Data",
-              fill: true,
-              borderColor: config.colors.primary,
-              borderWidth: 2,
-              borderDash: [],
-              borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.primary,
-              pointBorderColor: "rgba(255,255,255,0)",
-              pointHoverBackgroundColor: config.colors.primary,
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
-              data: [80, 100, 70, 80, 120, 80],
-            },
-          ],
-        },
-        gradientColors: config.colors.primaryGradient,
-        gradientStops: [1, 0.2, 0],
-      },
-      greenLineChart: {
-        extraOptions: chartConfigs.greenChartOptions,
-        chartData: {
-          labels: ["JUL", "AUG", "SEP", "OCT", "NOV"],
-          datasets: [
-            {
-              label: "My First dataset",
-              fill: true,
-              borderColor: config.colors.danger,
-              borderWidth: 2,
-              borderDash: [],
-              borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.danger,
-              pointBorderColor: "rgba(255,255,255,0)",
-              pointHoverBackgroundColor: config.colors.danger,
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
-              data: [90, 27, 60, 12, 80],
-            },
-          ],
-        },
-        gradientColors: [
-          "rgba(66,134,121,0.15)",
-          "rgba(66,134,121,0.0)",
-          "rgba(66,134,121,0)",
-        ],
-        gradientStops: [1, 0.4, 0],
-      },
-      blueBarChart: {
-        extraOptions: chartConfigs.barChartOptions,
-        chartData: {
-          labels: ["USA", "GER", "AUS", "UK", "RO", "BR"],
-          datasets: [
-            {
-              label: "Countries",
-              fill: true,
-              borderColor: config.colors.info,
-              borderWidth: 2,
-              borderDash: [],
-              borderDashOffset: 0.0,
-              data: [53, 20, 10, 80, 100, 45],
-            },
-          ],
-        },
         gradientColors: config.colors.primaryGradient,
         gradientStops: [1, 0.4, 0],
       },
     };
   },
-  computed: {
-    enableRTL() {
-      return this.$route.query.enableRTL;
-    },
-    isRTL() {
-      return this.$rtl.isRTL;
-    },
-    bigLineChartCategories() {
-      return this.$t("dashboard.chartCategories");
-    },
-  },
   methods: {
-    obterDataAtualFormatada() {
+    formatDataAtual() {
       const dataAtual = new Date();
-      return dataAtual.toLocaleDateString("pt-BR");
+      this.dataAtualFormatada = dataAtual.toLocaleDateString("pt-BR");
     },
     async fetchConsumptionData() {
       try {
@@ -190,14 +93,13 @@ export default {
         const data = await response.json();
 
         if (data.payLoad && Array.isArray(data.payLoad)) {
-          // Pega os últimos 20 registros
           const lastItems = data.payLoad.slice(-20);
+          const labels = lastItems.map(item =>
+            item.DateTime ? new Date(item.DateTime).toLocaleDateString("pt-BR") : ""
+          );
+          const consumos = lastItems.map(item => item.consumo);
 
-          // Extrai hora e consumo
-          const labels = lastItems.map((item) => item.hora.split("/")[0]);
-          const consumos = lastItems.map((item) => item.consumo);
-
-          const chartData = {
+          this.bigLineChart.chartData = {
             labels,
             datasets: [
               {
@@ -217,11 +119,9 @@ export default {
             ],
           };
 
-          // Atualiza o gráfico
-          this.$refs.bigChart.updateGradients(chartData);
-          this.bigLineChart.chartData = chartData;
-        } else {
-          console.error("Formato de dados inesperado", data);
+          if (this.$refs.bigChart) {
+            this.$refs.bigChart.updateGradients(this.bigLineChart.chartData);
+          }
         }
       } catch (error) {
         console.error("Erro ao buscar dados de consumo:", error);
@@ -232,31 +132,46 @@ export default {
         const response = await fetch("http://localhost:8000/consumo_diario");
         const data = await response.json();
 
-        this.consumoTotal = data.consumo_total.toFixed(2);
+        this.consumoTotal = data.consumo_total ? data.consumo_total.toFixed(2) : "0.00";
+        this.expectativa = (parseFloat(this.consumoTotal) * 6.0).toFixed(2);
       } catch (error) {
-        console.error("Erro ao buscar dados de consumo:", error);
+        console.error("Erro ao buscar dados de consumo total:", error);
       }
-    },
-    calculaExpectativa() {
-      let valor = this.consumoTotal * 6.0;
-      return valor.toFixed(2);
     },
   },
   mounted() {
-    this.i18n = this.$i18n;
-    if (this.enableRTL) {
-      this.i18n.locale = "ar";
-      this.$rtl.enableRTL();
-    }
-    this.fetchConsumptionData(); // <-- Atualiza o gráfico com os dados reais
+    this.formatDataAtual();
+    this.fetchConsumptionData();
     this.fetchConsumptionTotalData();
-  },
-  beforeDestroy() {
-    if (this.$rtl.isRTL) {
-      this.i18n.locale = "en";
-      this.$rtl.disableRTL();
-    }
   },
 };
 </script>
-<style></style>
+
+<style scoped>
+.dashboard-card {
+  border-left: 8px solid #007bff;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.card-category {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.badge {
+  font-size: 0.95em;
+}
+
+.historico-scroll {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+@media (max-width: 767px) {
+  .dashboard-card {
+    border-left: none;
+    border-top: 8px solid #007bff;
+  }
+}
+</style>
