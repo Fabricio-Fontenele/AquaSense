@@ -34,23 +34,6 @@ AquaSense é uma plataforma inteligente para monitoramento, gestão e economia d
 
 ---
 
-## Arquitetura
-
-```mermaid
-graph LR
-AquaSense Web[Dashboard Web (Vue.js)]
-Mobile[App Mobile (React Native)]
-Backend[(API Python/FastAPI)]
-DB[(PostgreSQL/AWS RDS)]
-IoT[Sensor IoT / MQTT]
-AquaSense Web --> Backend
-Mobile --> Backend
-Backend --> DB
-IoT --> Backend
-Backend --> IA[Algoritmos IA]
-```
-
----
 
 ## Tecnologias
 
