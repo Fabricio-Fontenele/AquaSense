@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./backEnd
+    container_name: aquasense-backend
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backEnd/simulacao_consumo_agua_realista.json:/app/simulacao_consumo_agua_realista.json
+    environment:
+      - TZ=America/Fortaleza
+
+  frontend:
+    build: ./frontEnd
+    container_name: aquasense-frontend
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      - TZ=America/Fortaleza
