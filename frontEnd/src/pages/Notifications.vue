@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <card>
         <h4 slot="header">Notificações</h4>
         <base-alert type="info">
@@ -22,40 +22,6 @@
             lines. You can see that the icon and the close button are always
             vertically aligned. This is a beautiful notification. So you don't
             have to worry about the style.</span
-          >
-        </base-alert>
-      </card>
-    </div class="notifications-states-float">
-      <card>
-        <h4 slot="header">Notifications states</h4>
-        <base-alert type="primary" dismissible>
-          <span
-            ><b> Primary - </b> This is a regular notification made with
-            ".alert-primary"</span
-          >
-        </base-alert>
-        <base-alert type="info" dismissible>
-          <span
-            ><b> Info - </b> This is a regular notification made with
-            ".alert-info"</span
-          >
-        </base-alert>
-        <base-alert type="success" dismissible>
-          <span
-            ><b> Success - </b> This is a regular notification made with
-            ".alert-success"</span
-          >
-        </base-alert>
-        <base-alert type="warning" dismissible>
-          <span
-            ><b> Warning - </b> This is a regular notification made with
-            ".alert-warning"</span
-          >
-        </base-alert>
-        <base-alert type="danger" dismissible>
-          <span
-            ><b> Danger - </b> This is a regular notification made with
-            ".alert-danger"</span
           >
         </base-alert>
       </card>
